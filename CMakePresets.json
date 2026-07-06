@@ -1,0 +1,43 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31,
+    "patch": 5
+  },
+  "configurePresets": [
+    {
+        "name": "ninja-multi-windows",
+        "displayName": "Ninja Multi-Config",
+        "description": "Default build using Ninja Multi-Config generator",
+        "generator": "Ninja Multi-Config",
+        "binaryDir": "${sourceDir}/build/ninja",
+        "toolchainFile": "${sourceDir}/cmake/clang-windows-toolchain.cmake"
+    },
+    {
+      "name": "vs-2022-windows",
+      "displayName": "Visual Studio 17 2022",
+      "description": "Default build using Visual Studio generator",
+      "generator": "Visual Studio 17 2022",
+      "toolchainFile": "${sourceDir}/cmake/clang-windows-toolchain.cmake"
+    },
+    {
+      "name": "vs-2022-windows-x64",
+      "inherits": "vs-2022-windows",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/vs64",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "X:/vcpkg/installed/x64-windows"
+      }
+    },
+    {
+      "name": "vs-2022-windows-win32",
+      "inherits": "vs-2022-windows",
+      "architecture": "Win32",
+      "binaryDir": "${sourceDir}/build/vs32",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "X:/vcpkg/installed/x86-windows"
+      }
+    }
+  ]
+}
